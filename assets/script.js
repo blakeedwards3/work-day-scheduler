@@ -18,7 +18,11 @@ $(".time-block").each(function() {
 });
 
 // save time block content in local storage with the save button
-
+$(".saveBtn").on("click", function() {
+  var id = $(this).parent().attr("id");
+  var data = $(this).siblings(".description").val();
+  localStorage.setItem(id, data);
+});
 
 // saved events remain on the page when refreshed
 
