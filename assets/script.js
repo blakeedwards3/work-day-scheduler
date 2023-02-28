@@ -4,10 +4,29 @@ $(document).ready(function() {
     $("#currentDay").text(currentDay);
 });
 
+// color-code the time blocks to indicate past, present, or future
+var currentTime = dayjs().hour();
+$(".time-block").each(function() {
+  var hour = parseInt($(this).attr("id").split("-")[1]);
+  if (hour < currentTime) {
+    $(this).addClass("past");
+  } else if (hour === currentTime) {
+    $(this).addClass("present");
+  } else {
+    $(this).addClass("future");
+  }
+});
+
+// save time block content in local storage with the save button
+
+
+// saved events remain on the page when refreshed
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -26,4 +45,3 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
